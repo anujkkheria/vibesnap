@@ -1,4 +1,5 @@
 import React from 'react'
+import PencilButton from './PencilButton'
 interface IProfileHeader {
   edit: boolean
   bgimage: string
@@ -16,14 +17,24 @@ const ProfileHeader: React.FC<IProfileHeader> = ({
         backgroundImage: `url(${bgimage})`,
       }}
     >
-      {edit && 'edit'}
+      {edit && (
+        <div className=' absolute right-4 bottom-2'>
+          <PencilButton />
+        </div>
+      )}
       <div
         className='absolute w-24 h-24 -bottom-10 rounded-full bg-black left-3 bg-cover bg-center bg-no-repeat '
         style={{
           backgroundImage: `url(${profileimage})`,
         }}
       >
-        {edit && 'edit'}
+        <div className='relative w-full h-full'>
+          {edit && (
+            <div className=' absolute bottom-4 -right-1'>
+              <PencilButton />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
