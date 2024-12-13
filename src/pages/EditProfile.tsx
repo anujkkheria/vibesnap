@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Header from '../components/Profile/Header'
 import FormInput from '../components/FormInput'
 import { useAuth } from '../context/AuthContext'
-import RoundedButton from '../components/RoundedButton'
+
 const EditProfile = () => {
   const { user } = useAuth()
   const [userName, setUserName] = useState('anuj')
