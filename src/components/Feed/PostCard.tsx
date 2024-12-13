@@ -2,12 +2,18 @@ import HeartIcon from "../../assets/HeartIcon.svg";
 import ShareIcon from "../../assets/ShareIcon.svg";
 import { ImageGallery } from "./ImageGallery";
 import { Post } from "../../types";
+import { AnimatedIconButton } from "./AnimatedButton";
+import { usePostInteraction } from "../../hooks/usePostInteractions";
+import { cn } from "../../utils/cn";
 
 interface PostCardProps {
   post: Post;
 }
 
 export function PostCard({ post }: PostCardProps) {
+  const { likes, isLiked, handleLike, handleShare } = usePostInteraction(
+    post.likes
+  );
   return (
     <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
       <div className="p-4">
@@ -37,15 +43,27 @@ export function PostCard({ post }: PostCardProps) {
 
         {post.images && <ImageGallery images={post.images} />}
 
-        <div className="flex items-center justify-between pt-4">
-          <button className="flex items-center gap-2 text-gray-600 hover:text-pink-500 transition-colors">
-            <img src={HeartIcon} className="w-5 h-5" />
-            <span>{post.likes}</span>
-          </button>
-          <button className="flex items-center gap-2 text-gray-600 hover:text-blue-500 transition-colors">
-            <img src={ShareIcon} className="w-5 h-5" />
-            <span>Share</span>
-          </button>
+        <div className="flex items-center justify-between pt-4 border-t">
+          <AnimatedIconButton
+            icon={
+              <img
+                src={HeartIcon}
+                className={cn(
+                  "w-5 h-5 transition-colors duration-200",
+                  isLiked && "fill-current"
+                )}
+              />
+            }
+            label={likes}
+            isActive={isLiked}
+            onClick={handleLike}
+          />
+          <AnimatedIconButton
+            icon={<img src={ShareIcon} className="w-5 h-5" />}
+            label="Share"
+            activeColor="text-blue-500"
+            onClick={handleShare}
+          />
         </div>
       </div>
     </div>
