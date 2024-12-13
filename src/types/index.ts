@@ -13,3 +13,10 @@ export interface Post {
   images?: string[];
   hashtags: string[];
 }
+
+export interface GalleryImage {
+  url: string;
+  type: "image" | "video";
+  selected?: boolean;
+  selectedIndex?: number;
+}
