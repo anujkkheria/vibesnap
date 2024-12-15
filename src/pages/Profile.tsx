@@ -25,9 +25,7 @@ const Profile = () => {
       <div>
         <ProfileInfo />
       </div>
-      <div className=' absolute top-2 left-2'>
-        <BackButton />
-      </div>
+      <BackButton />
       <div className=' absolute bottom-8 right-6 w-6 h-6'>
         <CreatePost />
       </div>
