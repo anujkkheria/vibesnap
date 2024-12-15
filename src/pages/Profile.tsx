@@ -4,10 +4,14 @@ import ProfileInfo from '../components/Profile/ProfileInfo'
 import RoundedButton from '../components/RoundedButton'
 import BackButton from '../components/BackButton'
 import { CreatePost } from '../components/Feed/CreatePost'
+import { useNavigate } from 'react-router-dom'
 const Profile = () => {
   const { user } = useAuth()
+  const navigate = useNavigate()
   const profileimage = user?.providerData[0].photoURL
-  console.log(profileimage)
+  const handleEditButtonClick = () => {
+    navigate('/edit')
+  }
   return (
     <div className='relative'>
       <ProfileHeader
@@ -16,7 +20,7 @@ const Profile = () => {
         bgimage='https://images.unsplash.com/photo-1579546929518-9e396f3cc809'
       />
       <div className='w-full flex flex-row-reverse'>
-        <RoundedButton />
+        <RoundedButton handleClick={handleEditButtonClick} />
       </div>
       <div>
         <ProfileInfo />
