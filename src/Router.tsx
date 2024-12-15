@@ -2,11 +2,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import React from 'react'
 
-
-const AddPost = React.lazy(() => import("./pages/AddPost"));
-const Auth = React.lazy(() => import("./pages/Auth"));
-const Profile = React.lazy(() => import("./pages/Profile"));
-const Feed = React.lazy(() => import("./pages/Feed"));
+// const AddPost = React.lazy(() => import("./pages/AddPost"));
+const Auth = React.lazy(() => import('./pages/Auth'))
+const NewPost = React.lazy(() => import('./pages/NewPost'))
+const Profile = React.lazy(() => import('./pages/Profile'))
+const Feed = React.lazy(() => import('./pages/Feed'))
 const EditProfile = React.lazy(() => import('./pages/EditProfile'))
 
 const Router = () => {
@@ -24,8 +24,8 @@ const Router = () => {
       element: <Feed />,
     },
     {
-      path: "/add-post",
-      element: <AddPost />,
+      path: '/add-post',
+      element: <NewPost />,
     },
     {
       path: '/edit',
